@@ -4,6 +4,10 @@ Finding someone in an organization should not feel like querying a database. Peo
 
 The home page is a compact directory with counts, search, and a department filter. Selecting someone opens a dedicated profile that separates identity from contact, work, and location details.
 
+## Live Demo
+
+https://people-mesh.vercel.app/
+
 ## Overview
 
 PeopleMesh is a Next.js App Router frontend. It reads a public demo dataset, validates it in a thin data layer, and renders two screens:
