@@ -11,10 +11,7 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  title: {
-    default: "PeopleMesh",
-    template: "%s · PeopleMesh",
-  },
+  title: "PeopleMesh",
   description:
     "A focused people directory for finding people and understanding where they fit.",
 };

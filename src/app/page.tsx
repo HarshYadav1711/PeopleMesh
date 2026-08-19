@@ -1,13 +1,4 @@
-import { connection } from "next/server";
-
-import { UserDirectory } from "@/components/directory/user-directory";
-import { getUsers } from "@/lib/users";
-
-export default async function Home() {
-  // Request-time fetch so source failures reach the route error UI.
-  await connection();
-  const users = await getUsers();
-
+export default function Home() {
   return (
     <main className="mx-auto flex min-h-dvh w-full max-w-5xl flex-col px-4 py-10 sm:px-6 lg:px-8">
       <header className="border-b border-border pb-6">
@@ -22,8 +13,6 @@ export default async function Home() {
           they fit.
         </p>
       </header>
-
-      <UserDirectory users={users} />
     </main>
   );
 }
