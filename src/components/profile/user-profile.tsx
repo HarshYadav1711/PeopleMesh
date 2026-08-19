@@ -48,30 +48,53 @@ function ProfileField({
   );
 }
 
+function ProfileLink({
+  href,
+  children,
+  className,
+}: {
+  href: string;
+  children: ReactNode;
+  className?: string;
+}) {
+  return (
+    <a
+      href={href}
+      className={cn(
+        "rounded-sm underline-offset-4 hover:underline focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none",
+        className,
+      )}
+    >
+      {children}
+    </a>
+  );
+}
+
 export function UserProfile({ user }: UserProfileProps) {
   const fullName = `${user.firstName} ${user.lastName}`;
 
   return (
     <article>
-      <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
-        <div className="flex min-w-0 items-start gap-4">
-          <Avatar className="relative size-[72px] overflow-hidden">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
+        <div className="flex min-w-0 items-start gap-3 sm:gap-4">
+          <Avatar className="relative size-14 shrink-0 overflow-hidden sm:size-[72px]">
             <Image
               src={user.image}
               alt={`Portrait of ${fullName}`}
               width={72}
               height={72}
+              sizes="(max-width: 640px) 56px, 72px"
               className="size-full object-cover"
             />
           </Avatar>
           <div className="min-w-0">
-            <h1 className="text-2xl font-semibold tracking-tight text-foreground">
+            <h1 className="text-xl font-semibold tracking-tight text-pretty break-words text-foreground sm:text-2xl">
               {fullName}
             </h1>
-            <p className="mt-1 text-sm text-muted-foreground">
+            <p className="mt-1 text-sm text-pretty break-words text-muted-foreground">
               {user.company.title}
             </p>
-            <p className="mt-1 break-words text-sm text-muted-foreground">
+            <p className="mt-1 text-sm text-pretty break-words text-muted-foreground">
               {user.company.name}
             </p>
             <div className="mt-3">
@@ -82,29 +105,24 @@ export function UserProfile({ user }: UserProfileProps) {
 
         <Link
           href="/"
-          className={cn(buttonVariants({ variant: "outline" }), "w-fit shrink-0")}
+          className={cn(
+            buttonVariants({ variant: "outline" }),
+            "w-fit shrink-0 min-h-9",
+          )}
         >
           Back to directory
         </Link>
       </div>
 
-      <div className="mt-10 grid grid-cols-1 gap-10 md:grid-cols-3">
+      <div className="mt-8 grid grid-cols-1 gap-8 sm:mt-10 md:grid-cols-3 md:gap-8 lg:gap-10">
         <ProfileSection title="Contact">
           <ProfileField label="Email">
-            <a
-              href={`mailto:${user.email}`}
-              className="underline-offset-4 hover:underline"
-            >
+            <ProfileLink href={`mailto:${user.email}`} className="break-all">
               {user.email}
-            </a>
+            </ProfileLink>
           </ProfileField>
           <ProfileField label="Phone">
-            <a
-              href={toTelHref(user.phone)}
-              className="underline-offset-4 hover:underline"
-            >
-              {user.phone}
-            </a>
+            <ProfileLink href={toTelHref(user.phone)}>{user.phone}</ProfileLink>
           </ProfileField>
           <ProfileField label="Username">{user.username}</ProfileField>
         </ProfileSection>

@@ -59,8 +59,8 @@ export function UserDirectory({ users }: UserDirectoryProps) {
 
   return (
     <>
-      <section aria-label="Directory summary" className="mt-8">
-        <dl className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+      <section aria-label="Directory summary" className="mt-6 sm:mt-8">
+        <dl className="grid grid-cols-3 gap-2 sm:gap-3">
           <Stat label="People" value={users.length} />
           <Stat label="Departments" value={departments.length} />
           <Stat
@@ -70,8 +70,8 @@ export function UserDirectory({ users }: UserDirectoryProps) {
         </dl>
       </section>
 
-      <div className="mt-8 space-y-4">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-end">
+      <div className="mt-6 space-y-3 sm:mt-8 sm:space-y-4">
+        <div className="flex flex-col gap-3 md:flex-row md:items-end">
           <div className="min-w-0 flex-1">
             <label
               htmlFor="directory-search"
@@ -86,11 +86,11 @@ export function UserDirectory({ users }: UserDirectoryProps) {
               onChange={(event) => setSearchQuery(event.target.value)}
               placeholder="Name, email, or company"
               autoComplete="off"
-              className="mt-1.5"
+              className="mt-1.5 min-h-9"
             />
           </div>
 
-          <div className="w-full sm:w-56">
+          <div className="w-full min-w-0 md:w-60 lg:w-64">
             <label
               htmlFor="department-filter"
               className="text-sm font-medium text-foreground"
@@ -108,8 +108,7 @@ export function UserDirectory({ users }: UserDirectoryProps) {
             >
               <SelectTrigger
                 id="department-filter"
-                className="mt-1.5 w-full"
-                aria-label="Filter by department"
+                className="mt-1.5 h-9 min-h-9 w-full min-w-0"
               >
                 <SelectValue />
               </SelectTrigger>
@@ -126,13 +125,13 @@ export function UserDirectory({ users }: UserDirectoryProps) {
         </div>
 
         <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-          <p className="text-sm text-muted-foreground" aria-live="polite">
+          <p className="text-sm text-muted-foreground" aria-live="polite" aria-atomic="true">
             {hasActiveFilters
               ? `Showing ${filteredUsers.length} of ${users.length} people`
               : `${users.length} people`}
           </p>
           {hasActiveFilters ? (
-            <Button type="button" variant="ghost" size="sm" onClick={clearFilters}>
+            <Button type="button" variant="ghost" className="min-h-9" onClick={clearFilters}>
               Clear filters
             </Button>
           ) : null}
@@ -140,7 +139,7 @@ export function UserDirectory({ users }: UserDirectoryProps) {
       </div>
 
       {filteredUsers.length === 0 ? (
-        <div className="mt-6 rounded-xl border border-border px-4 py-12 text-center">
+        <div className="mt-6 rounded-xl border border-border px-4 py-10 text-center sm:py-12">
           <h2 className="text-base font-medium text-foreground">
             No matching people
           </h2>
@@ -150,13 +149,18 @@ export function UserDirectory({ users }: UserDirectoryProps) {
               : "There are no people in this department."}
           </p>
           {hasActiveFilters ? (
-            <Button type="button" variant="outline" className="mt-4" onClick={clearFilters}>
+            <Button
+              type="button"
+              variant="outline"
+              className="mt-4 min-h-9"
+              onClick={clearFilters}
+            >
               Clear filters
             </Button>
           ) : null}
         </div>
       ) : (
-        <ul className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-5 grid grid-cols-1 gap-3 sm:mt-6 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
           {filteredUsers.map((user) => (
             <li key={user.id} className="min-w-0">
               <UserCard user={user} />
@@ -170,9 +174,9 @@ export function UserDirectory({ users }: UserDirectoryProps) {
 
 function Stat({ label, value }: { label: string; value: number }) {
   return (
-    <div className="rounded-xl border border-border px-4 py-3">
-      <dt className="text-sm text-muted-foreground">{label}</dt>
-      <dd className="mt-1 text-2xl font-semibold tracking-tight tabular-nums">
+    <div className="min-w-0 rounded-xl border border-border px-2 py-2.5 sm:px-4 sm:py-3">
+      <dt className="text-xs text-muted-foreground sm:text-sm">{label}</dt>
+      <dd className="mt-1 text-xl font-semibold tracking-tight tabular-nums sm:text-2xl">
         {value}
       </dd>
     </div>

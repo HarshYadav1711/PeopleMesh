@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={cn("font-sans", geist.variable)}>
-      <body className="min-h-dvh antialiased">{children}</body>
+      <body className="min-h-dvh overflow-x-clip antialiased">{children}</body>
     </html>
   );
 }

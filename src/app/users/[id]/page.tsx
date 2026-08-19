@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 
+import { BrandMark, PageShell } from "@/components/layout/page-shell";
 import { UserProfile } from "@/components/profile/user-profile";
 import { getUserById } from "@/lib/users";
 
@@ -16,13 +17,11 @@ export default async function UserPage({
   }
 
   return (
-    <main className="mx-auto flex min-h-dvh w-full max-w-5xl flex-col px-4 py-10 sm:px-6 lg:px-8">
-      <p className="text-sm font-medium tracking-wide text-muted-foreground">
-        PeopleMesh
-      </p>
-      <div className="mt-8">
+    <PageShell>
+      <BrandMark />
+      <div className="mt-6 sm:mt-8">
         <UserProfile user={user} />
       </div>
-    </main>
+    </PageShell>
   );
 }

@@ -17,7 +17,7 @@ export function RouteError({
   showDirectoryLink = false,
 }: RouteErrorProps) {
   return (
-    <main className="mx-auto flex min-h-dvh w-full max-w-5xl flex-col px-4 py-10 sm:px-6 lg:px-8">
+    <main className="mx-auto flex min-h-dvh w-full min-w-0 max-w-5xl flex-col px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
       <p className="text-sm font-medium tracking-wide text-muted-foreground">
         PeopleMesh
       </p>
@@ -28,13 +28,13 @@ export function RouteError({
         {description}
       </p>
       <div className="mt-6 flex flex-wrap items-center gap-3">
-        <Button type="button" onClick={() => reset()}>
+        <Button type="button" className="min-h-9" onClick={() => reset()}>
           Try again
         </Button>
         {showDirectoryLink ? (
           <Link
             href="/"
-            className={cn(buttonVariants({ variant: "outline" }))}
+            className={cn(buttonVariants({ variant: "outline" }), "min-h-9")}
           >
             Back to directory
           </Link>

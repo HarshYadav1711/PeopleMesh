@@ -1,11 +1,11 @@
 import Link from "next/link";
 
+import { BrandMark, PageShell } from "@/components/layout/page-shell";
+
 export default function UserNotFound() {
   return (
-    <main className="mx-auto flex min-h-dvh w-full max-w-5xl flex-col px-4 py-10 sm:px-6 lg:px-8">
-      <p className="text-sm font-medium tracking-wide text-muted-foreground">
-        PeopleMesh
-      </p>
+    <PageShell>
+      <BrandMark />
       <h1 className="mt-8 text-2xl font-semibold tracking-tight text-foreground">
         User not found
       </h1>
@@ -15,11 +15,11 @@ export default function UserNotFound() {
       <p className="mt-6 text-sm">
         <Link
           href="/"
-          className="font-medium text-foreground underline-offset-4 hover:underline"
+          className="rounded-sm font-medium text-foreground underline-offset-4 hover:underline focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
         >
           PeopleMesh
         </Link>
       </p>
-    </main>
+    </PageShell>
   );
 }

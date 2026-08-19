@@ -1,4 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { BrandMark } from "@/components/layout/page-shell";
 import { Skeleton } from "@/components/ui/skeleton";
 
 function DirectoryCardSkeleton() {
@@ -14,10 +15,10 @@ function DirectoryCardSkeleton() {
         </div>
         <div className="mt-4 space-y-1.5">
           <Skeleton className="h-5 w-20 rounded-full" />
-          <Skeleton className="h-3.5 w-40" />
+          <Skeleton className="h-3.5 w-40 max-w-full" />
           <Skeleton className="h-3.5 w-28" />
         </div>
-        <Skeleton className="mt-5 h-8 w-24" />
+        <Skeleton className="mt-5 h-9 w-24" />
       </CardContent>
     </Card>
   );
@@ -27,41 +28,39 @@ export default function HomeLoading() {
   return (
     <main
       aria-busy="true"
-      className="mx-auto flex min-h-dvh w-full max-w-5xl flex-col px-4 py-10 sm:px-6 lg:px-8"
+      className="mx-auto flex min-h-dvh w-full min-w-0 max-w-5xl flex-col px-4 py-8 sm:px-6 sm:py-10 lg:px-8"
     >
       <p className="sr-only">Loading directory</p>
-      <header className="border-b border-border pb-6">
-        <p className="text-sm font-medium tracking-wide text-muted-foreground">
-          PeopleMesh
-        </p>
-        <h1 className="mt-2 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+      <header className="border-b border-border pb-5 sm:pb-6">
+        <BrandMark />
+        <h1 className="mt-2 text-xl font-semibold tracking-tight text-pretty text-foreground sm:text-2xl lg:text-3xl">
           Find people and understand where they fit.
         </h1>
       </header>
 
-      <section aria-hidden="true" className="mt-8">
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+      <section aria-hidden="true" className="mt-6 sm:mt-8">
+        <div className="grid grid-cols-3 gap-2 sm:gap-3">
           {Array.from({ length: 3 }, (_, index) => (
             <div
               key={index}
-              className="rounded-xl border border-border px-4 py-3"
+              className="min-w-0 rounded-xl border border-border px-2 py-2.5 sm:px-4 sm:py-3"
             >
-              <Skeleton className="h-4 w-24" />
-              <Skeleton className="mt-2 h-8 w-10" />
+              <Skeleton className="h-3 w-14 sm:h-4 sm:w-24" />
+              <Skeleton className="mt-2 h-6 w-8 sm:h-8 sm:w-10" />
             </div>
           ))}
         </div>
       </section>
 
-      <div aria-hidden="true" className="mt-8 space-y-4">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-end">
+      <div aria-hidden="true" className="mt-6 space-y-3 sm:mt-8 sm:space-y-4">
+        <div className="flex flex-col gap-3 md:flex-row md:items-end">
           <div className="min-w-0 flex-1">
             <Skeleton className="h-4 w-14" />
-            <Skeleton className="mt-1.5 h-8 w-full" />
+            <Skeleton className="mt-1.5 h-9 w-full" />
           </div>
-          <div className="w-full sm:w-56">
+          <div className="w-full min-w-0 md:w-60 lg:w-64">
             <Skeleton className="h-4 w-24" />
-            <Skeleton className="mt-1.5 h-8 w-full" />
+            <Skeleton className="mt-1.5 h-9 w-full" />
           </div>
         </div>
         <Skeleton className="h-4 w-28" />
@@ -69,7 +68,7 @@ export default function HomeLoading() {
 
       <ul
         aria-hidden="true"
-        className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
+        className="mt-5 grid grid-cols-1 gap-3 sm:mt-6 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3"
       >
         {Array.from({ length: 6 }, (_, index) => (
           <li key={index} className="min-w-0">
